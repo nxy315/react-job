@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Button } from 'antd-mobile'
 
-class App extends Component {
+class App extends React.Component{ 
   render() {
+    const boss = '尼宵阳'
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <div>
+        <h2>独立团，团长{boss}</h2>
+        <一营 老大='王艳芳'></一营>  
+        <Button type='primary'>确定</Button>
+      </div>)
   }
 }
 
-export default App;
+class 一营 extends React.Component{
+  render() {
+    return <h2>一营营长，{this.props.老大}</h2>
+  }
+}
+
+export default App
