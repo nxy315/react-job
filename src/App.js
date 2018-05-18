@@ -1,22 +1,22 @@
-import React from 'react'
-import { Button } from 'antd-mobile'
+import React from 'react';
+import { Button } from 'antd-mobile';
+import { connect } from 'react-redux';
+import { add, remove, addAsync } from './index.redux'
 
 class App extends React.Component{ 
   render() {
-    const boss = '尼宵阳'
     return (
       <div>
-        <h2>独立团，团长{boss}</h2>
-        <一营 老大='王艳芳'></一营>  
-        <Button type='primary'>确定</Button>
+        <p>总共有{this.props.num}</p>
+        <Button onClick={this.props.add} inline size='small' type='primary' style={{marginRight: '4px'}}>增加</Button>
+        <Button onClick={this.props.remove} inline size='small' type='ghost' style={{marginRight: '4px'}}>减少</Button>
+        <Button onClick={this.props.addAsync} inline size='small' type='primary'>增加async</Button>
       </div>)
   }
 }
-
-class 一营 extends React.Component{
-  render() {
-    return <h2>一营营长，{this.props.老大}</h2>
-  }
-}
+App = connect(
+  state => ({num: state}),
+  { add, remove, addAsync }
+)(App)
 
 export default App
