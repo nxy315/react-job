@@ -1,27 +1,27 @@
-const ADD = 'ADD'
-const REMOVE = 'REMOVE'
+const ADD_GUN = '加机关枪'
+const REMOVE_GUN = '减机关枪'
 
 export function counter(state=0, action) {
-    switch(action.type){
-        case ADD:
+    switch(action.type) {
+        case ADD_GUN:
             return state+1
-        case REMOVE:
+        case REMOVE_GUN:
             return state-1
         default:
-            return 10;
+            return 10
     }
 }
 
-export function add(){
-    return {type: ADD}
+export function addGun(){
+    return {type: ADD_GUN}
 }
-export function remove(){
-    return {type: REMOVE}
+export function removeGun(){
+    return {type: REMOVE_GUN}
 }
-export function addAsync(){
+export function addGunAsync(){
     return dispatch => {
         setTimeout(() => {
-            dispatch(add())
+            dispatch(addGun())
         }, 2000)
     }
 }
