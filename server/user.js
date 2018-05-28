@@ -6,8 +6,9 @@ const User = model.getModel('user')
 const _filter = {'pwd': 0, '__v': 0}
 
 Router.get('/list', (req, res) => {
-  User.find({}, (err, doc) => {
-    return res.json(doc)
+  const { type } = req.query
+  User.find({ type }, {'__v': 0}, (err, doc) => {
+    return res.json({code: 0, data: doc})
   })
 })
 
@@ -46,9 +47,26 @@ Router.post('/login', (req, res) => {
   })
 })
 
+Router.post('/update', (req, res) => {
+  const userid = req.cookies.userid
+  if(!userid) {
+    return res.json({code: 1})
+  }
+
+  const body = req.body
+  console.log(body)
+  User.findByIdAndUpdate(userid, body, (e, d) => {
+    const data = Object.assign({}, {
+      user: d.user,
+      type: d.type
+    },body)
+
+    return res.json({code: 0, data})
+  })
+})
+
 Router.get('/info', (req, res) => {
   const {userid} = req.cookies
-  console.log(userid)
   if(!userid) {
     return res.json({code: 1, msg: '登录过期'})
   }
@@ -56,7 +74,6 @@ Router.get('/info', (req, res) => {
     if(err) {
       return res.json({code: 1, msg: '服务器出错'})
     }
-    console.log(doc)
     if(doc) {
       return res.json({code: 0, data: doc})
     }

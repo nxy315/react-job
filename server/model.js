@@ -9,7 +9,7 @@ const models = {
     'pwd': {type: String, require: true},
     'type': {type: String, require: true},
     'avator': {type: String},//头像
-    'des': {type: String},//个人简介
+    'desc': {type: String},//个人简介
     'title': {type: String},//职位名
 
     //如果是boss，还有两个字段
