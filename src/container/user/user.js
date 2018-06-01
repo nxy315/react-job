@@ -1,15 +1,15 @@
 import React from 'react'
 
-class Msg extends React.Component{
+class User extends React.Component{
 	constructor(props) {
 		super(props)
 	}
 
 	render() {
 		return (
-			<div>Msg</div>
+			<div>Me</div>
 		)
 	}
 }
 
-export default Msg
+export default User

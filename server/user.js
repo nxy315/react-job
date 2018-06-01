@@ -3,7 +3,17 @@ const utils = require('utility')
 const Router = express.Router()
 const model = require('./model')
 const User = model.getModel('user')
+const Chat = model.getModel('chat')
 const _filter = {'pwd': 0, '__v': 0}
+
+Router.get('/getmsglist', (req, res) => {
+  const user = req.cookies.userid
+  Chat.find({'$or': [{from:user, to:user}]}, (e, d) => {
+    if(!e) {
+      return res.json({code:0, msgs: d})
+    }
+  })
+})
 
 Router.get('/list', (req, res) => {
   const { type } = req.query

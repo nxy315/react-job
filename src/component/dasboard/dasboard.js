@@ -5,8 +5,8 @@ import NavLinkBar from '../navlink/navlink'
 import { Route, Switch } from 'react-router-dom'
 import Boss from '../../container/boss/boss'
 import Genius from '../../container/genius/genius'
-import Msg from '../../container/msg/msg'
-import Me from '../../container/me/me'
+import Msg from '../../component/msg/msg'
+import User from '../../component/user/user'
 
 @connect(
 	state => state
@@ -50,7 +50,7 @@ class Dashboard extends React.Component{
 				text: '我',
 				icon: 'user',
 				title: '个人中心',
-				component: Me
+				component: User
 			},
 		]
 

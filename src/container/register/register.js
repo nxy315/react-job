@@ -39,12 +39,6 @@ class Register extends React.Component{
     this.props.register(this.state)
   }
 
-  handleChange(key, val) {
-    this.setState({
-      [key]: val
-    })
-  }
-
   render() {
     const RadioItem = Radio.RadioItem
     return (
