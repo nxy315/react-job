@@ -23,17 +23,17 @@ class Login extends React.Component{
   }
 
   /**
-   * 跳转注册页面
-   */
-  register() {
-    this.props.history.push('/register')
-  }
-
-  /**
    * 登录
    */
   handleLogin() {
     this.props.login(this.state)
+  }
+  
+  /**
+   * 跳转注册页面
+   */
+  register() {
+    this.props.history.push('/register')
   }
 
   handleChange(key, val) {

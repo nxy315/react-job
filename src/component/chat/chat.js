@@ -23,8 +23,7 @@ class Chat extends React.Component{
 	}
 
 	componentDidMount() {
-		this.props.getMsgList();
-		this.props.recvMsg();
+		
 		// socket.on('recvmsg', data => {
 		// 	console.log(data)
 		// 	this.setState({
@@ -37,6 +36,8 @@ class Chat extends React.Component{
 		const from = this.props.user._id
 		const to = this.props.match.params.user
 		const msg = this.state.text
+		console.log(from)
+		console.log(to)
 		this.props.sendMsg(from, to, msg)
 		this.setState({
 			text: ''
@@ -46,7 +47,7 @@ class Chat extends React.Component{
 	render() {
 		// this.props.match.parmas.user
 		const user = this.props.match.params.user
-		
+		const Item = List.Item
 		return (
 			<div id='chat-page'>
 				<NavBar mode='dark'>
@@ -54,9 +55,16 @@ class Chat extends React.Component{
 				</NavBar>
 				{this.props.chat.chatmsg.map(v => {
 					return v.from == user ? (
-						<p key={v._id}>对方发来的：{v.content}</p>
+						<List key={v._id}>
+							<Item>{v.content}</Item>
+						</List>
 					) : (
-						<p key={v._id}>我发送的：{v.content}</p>
+						<List key={v._id}>
+							<Item
+								
+								className='chat-me'
+							>{v.content}</Item>
+						</List>
 					)
 					// return <p key={v._id}>{v.content}</p>
 				})}

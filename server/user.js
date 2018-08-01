@@ -8,7 +8,8 @@ const _filter = {'pwd': 0, '__v': 0}
 
 Router.get('/getmsglist', (req, res) => {
   const user = req.cookies.userid
-  Chat.find({'$or': [{from:user, to:user}]}, (e, d) => {
+  console.log(user)
+  Chat.find({}, (e, d) => {
     if(!e) {
       return res.json({code:0, msgs: d})
     }
